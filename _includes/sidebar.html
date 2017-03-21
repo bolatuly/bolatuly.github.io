@@ -23,29 +23,38 @@
                     <li class="phone"><i class="fa fa-phone"></i><a href="tel:012 345 6789">012 345 6789</a></li>
                     {% endif %}
                     
-                    {% if site.website %}
+                    <!--{% if site.website %}
                     <li class="website"><i class="fa fa-globe"></i><a href="http://{{site.website}}" target="_blank">{{site.website}}</a></li>
                     {% else %}
                     <li class="website"><i class="fa fa-globe"></i><a href="http://blog.webjeda.com" target="_blank">blog.webjeda.com</a></li>
-                    {% endif %}
+                    {% endif %}-->
                     
-                    {% if site.linkedin %}
+                   <!-- {% if site.linkedin %}
                     <li class="linkedin"><i class="fa fa-linkedin"></i><a href="https://in.linkedin.com/in/{{site.linkedin}}" target="_blank">linkedin.com/in/{{site.linkedin}}</a></li>
                     {% else %}
                     <li class="linkedin"><i class="fa fa-linkedin"></i><a href="https://in.linkedin.com/in/sharath-kumar-87669956" target="_blank">linkedin.com/in/sharathdt</a></li>
-                    {% endif %}
+                    {% endif %}-->
                     
                     {% if site.github %}
                     <li class="github"><i class="fa fa-github"></i><a href="http://github.com/{{site.github}}" target="_blank">github.com/{{site.github}}</a></li>
-                    {% else %}
-                    <li class="github"><i class="fa fa-github"></i><a href="http://github.com/sharu725" target="_blank">github.com/sharu725</a></li>
                     {% endif %}
                     
-                    {% if site.twitter %}
+                    <!--{% if site.twitter %}
                     <li class="twitter"><i class="fa fa-twitter"></i><a href="https://twitter.com/{{site.twitter}}" target="_blank">{{site.twitter}}</a></li>
                     {% else %}
                      <li class="twitter"><i class="fa fa-twitter"></i><a href="https://twitter.com/@webjeda" target="_blank">@webjeda</a></li>
+                    {% endif %}-->
+					
+					
+					{% if site.whatsapp %}
+                    <li class="whatsapp"><i class="fa fa-whatsapp"></i><a href="whatsapp://send?text=Hello Azamat!&phone=={{site.whatsapp}}" target="_blank">{{site.whatsapp}}</a></li>
                     {% endif %}
+					
+					{% if site.telegram %}
+                    <li class="telegram"><i class="fa fa-telegram"></i><a href="https://telegram.me/{{site.telegram}}" target="_blank">{{site.telegram}}</a></li>
+                    {% endif %}
+					
+					
                     
                 </ul>
             </div><!--//contact-container-->

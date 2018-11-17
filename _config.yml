@@ -1,5 +1,5 @@
 include: ['_projects']
-title: My Resume
+title: Bolat Azamat
 #url: 'http://webjeda.com'
 #baseurl: '/online-cv' #change it according to your repository name
 
@@ -14,13 +14,13 @@ style: styles-6
 
 #Profile information
 name: Bolat Azamat
-tagline: Java/GIS Developer
+tagline: Software Developer
 pic: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
 
 #sidebar links
 email: b.a.bolatuly@gmail.com
-phone: +7 707 743 17 49
-phone_second: + 82 010 9137 1749
+phone: + 82 010 9137 1749
+phone_second: +7 707 743 17 49
 github: bolatuly
 telegram: abolatuly
 whatsapp: +77077431749

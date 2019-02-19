@@ -12,5 +12,127 @@
             such as office room, meeting room, or classroom, where she/he is located, and recognize human activity 
             from smartphone sensors. An experiment was conducted to validate our method.
         </p>
+        <h3>Introduction</h3>
+        <p>
+            While outdoor space has been a focus of research community on geospatial technology for last decades, indoor space has been recently attracting research interests due to demands of diverse applications of spatial information in indoor space and the progress of indoor spatial technologies such as indoor positioning. Indoor modeling advanced geometrically and semantically, which triggers developing user-oriented, context-aware applications. A number of researches have been done to understand the structure of building interior and geometric and semantic properties of indoor space.
+            However, one of the existing problems in indoor space is discovering the context of space. Mainly is about the structure of indoor architecture and its geometry, semantics, and topology, such as learning composition of space, things as walls, windows and so forth, but there is also more interesting object that composes indoor space - user.
+            The generally accepted use of term user context refers to any relevant information that can be used to characterize the situation of a user in indoor space. By advancing the context awareness the user experience can be optimized. User context-aware service knows the features users engage with as well as the content each user consumes. These lead to greater engagement and more revenue for diverse kind of services.
+            The context of users in indoor space depends not only on application constraints but also the way how they interact within the environment. For example, a user sitting in a library or in an office indicates a totally different context.
+            In this paper, we propose an approach on how to discovering the user context by com- bining the user’s activity context and location context. We approach the activity context by deep learning method, which leverages data from the ubiquitous sensors available in commodity mobile devices. 
+
+            First, we classify the behavior context of the user in indoor space into predefined categories by machine learning and second, we identify the cell type where she/he is located. Then we interpret the profile of the user by the function of the behavior type and cell type. We evaluate our approach through a field experiment in the campus of the university. The experiment that we conducted shows that it gives 92.47% of accuracy. In addition, we evaluated the effect of changing the sampling size and number of windows for activities in the neural network.
+            We can predict the user profile by our approach without any prior knowledge and it can be applied to many areas including safety and security control, medical health-care, marketing, or other applications. One of such examples can be a system with targeting application messages; users most likely respond positively to targeted advertisements, because they represent areas of interest for a particular user. Moreover, once the application recognizes which user takes place, this information can be used to change, trigger, and adapt the behavior of programs and systems.
+            Our main contributions of this work are as follows:
+        </p>
+        <ol>
+            <li>
+                We present an interesting method of discovering user context using the combination of human activity and location in indoor space.
+            </li>
+            <li>
+                We discover the context of the user in indoor space without any prior information and show that it performs better comparing with retrieving user context from user behavior without knowledge of location in indoor space.
+            </li>
+            <li>
+                For the best of our knowledge, we present the first work for extracting user context with subsequent user profile extraction.
+            </li>
+            <li>
+                We evaluated the effect of changing the sampling size and number of windows for activities in the machine learning algorithm and showed that the sampling size with 5s and a number of 20 windows gives the best results.
+            </li>
+           
+        </ol>
+        <h3>Proposed Approach</h3>
+        <p>
+            The ideas in the paper are built on two threads of research: mobile phone localization with 
+            semantics description and human activity recognition. To the best of our knowledge, 
+            it is one first work for extracting user context with subsequent user profile extraction.
+
+            A user profile (p) can be derived by a function <i>p = f(A,L,B,C)</i> where:
+        </p>
+        <ul>
+            <li>
+                <i>Activity context (A):</i> user activity performed in specific indoor location,
+            </li>
+            <li>
+                <i>Location context (L): </i> user location in indoor space,
+            </li>
+            <li>
+                <i>Activity model (B): </i> classification of user activities in indoor space, and
+            </li>
+            <li>
+                <i>Location model (C): </i> classification of indoor location.
+            </li>
+        </ul>
+        <img width='500px'src="{{site.baseurl}}/assets/images/User Context flowchart.png" alt="" style="display: block;margin: auto auto;"/>
+        </br>
+        <p>
+            The approach proposed in the paper is illustrated in figure above. On the one hand, the activity 
+            of a user is recognized from sensor readings of smart watch by a machine learning method and 
+            classified into three types as the activity model, on the other hand, the 
+            location of the user is matched to a room and its type is also recognized. 
+            Combining two factors - activity type and location type, we derive the profile of the user as the final output of the process.
+            The profile of the user also can be extracted from only activity type, without knowledge of location, but location semantics 
+            can help to reveal characteristics hidden from human activity recognition using internal motion sensors. 
+            For instance, giving a lecture and giving a talk are two activities with the identical pattern in motion by nature, 
+            but it is totally different from a context point of view. Our proposed method allow to reveal such characteristics 
+            and helps to distinguish this type of activities. We demonstrate this in the experiments section of the paper.            
+        </p>
+        <h3>Experiments</h3>
+        <p>
+            We evaluate our work using two parts. The first one is the evaluation of customized human activity 
+            recognition 
+            framework - <i>DeepSense</i>. The second one is user profile extraction. 
+            In this part, by combining location and activity data, we retrieve the user profile for users.
+        </p>
+        <h5>
+            Activity recognition evaluation
+        </h5>
+        <p>
+            We apportioned the dataset into training and test sets with 80-20 split. Since we cannot pass the entire dataset into the neural network at once, we divided dataset to a number of batches. In a single iteration, the algorithm is run with 64-batch size. Dropout technique was used to prevent over-fitting while training network.
+            In order to find the best sampling size, we perform experiments with the total number of windows T, see in the following figure.
+        </p>
+        <img width='500px'src="{{site.baseurl}}/assets/images/accuracy.png" alt="" style="display: block;margin: auto auto;"/>
+        <p>
+            Best results achieved by T = 20, with a sample length of 5s. As you see from figure, 
+            increasing the sample size to more than 5s degrades accuracy result. 
+            The implication here is that sampling data with the length of 5s will 
+            result in better activity recognition result. 
+            Additionally, this set of analyses highlighted the impact of windowing frequency.
+            Evaluation of machine learning algorithm consists of two parts. Firstly, 
+            we input to network activities defined by the user context, i.e without knowledge of location, 
+            instead of activities defined by the activity model. This experiment was conducted 
+            in order to show how network poorly differentiates activities with similar motion sensor measurements.
+        </p>
+        <h5>
+            User Profile Extraction
+        </h5>
+        <p>
+            In this section we will extract user profiles for scenario-free data, leaving out activities performed 
+            by scenario-based way. We filtered-out the results from the neural network with predicted activities labels 
+            for such users. 
+            Then, we identified a symbolic location from user location data. 
+            And by combining two contexts, we extract user profile.
+        </p>
+        <h3>Results</h3>
+        <p>
+            As the progress of indoor location technologies such as indoor positioning and indoor mapping, many applications 
+            for indoor spatial information have been recently developed. One of the basic functional requirements of 
+            indoor spatial information applications is to discover the context of the user in indoor space without 
+            any prior information. In our work, we developed a method to discover the profile of the user from her/his 
+            activity pattern and the location specified as a room. The activity type is recognized from the sensors of 
+            smartwatch by machine learning approach. The profile of each user is derived by combining the activity type 
+            and location type. The experimental results show that it gives more than 92% accuracy.
+            We propose that further research also should consider the temporal profile of the users. For instance, 
+            the same room at different time can be used for different purposes. One of such examples are rooms in 
+            educational buildings, where one room can be used for lectures, listening seminars and having meetings.
+            Since it is one of the first studies on discovering user context in indoor space to the best of our knowledge, 
+            there are several issues to be discussed and improved. First of all, 
+            we have to improve the accuracy although our first study already gave a good result. 
+            Second, the approach needs to be generalized.
+            Although the behavioral model and cell types introduced in the paper are limited, we expect 
+            that it can be easily extended to more realistic model and cell classification in prac- tice. 
+            Also, the further work have to consider the real-time requirement as many practical application 
+            require user profile as quickly as possible. One way to address such concerns is to perform the 
+            personalization at the client-side, with the user’s model stored on their local device.
+        </p>
+        
     </div><!--//summary-->
     </section><!--//section-->
